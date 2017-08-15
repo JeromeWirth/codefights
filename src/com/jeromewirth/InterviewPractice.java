@@ -1,33 +1,42 @@
 package com.jeromewirth;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 import java.util.Spliterator;
 
 public class InterviewPractice {
 
     int firstDuplicate(int[] a) {
-        List<Integer> n = new ArrayList<Integer>();
-        int dublicate = -1;
-        boolean bDub = false;
-        int i = 0;
 
-        while (bDub || i == a.length) {
-            // Prüfe ob das ArrayList leer ist
-            if (n.size() != 0) {
-                //ist die aktuelle Zahl bereits in der Liste?
-                for (int j = 0; j < n.size(); j++) {
-                    if (a[i] == n.get(j)) {
-                        System.out.println("IN DEM IF");
-                        dublicate = 1 + i;
-                        bDub = true;
-                    }
-                }
+        boolean dublette[]  = new boolean[a.length];
+
+        for (int i = 0; i < a.length; i++) {
+            if(dublette[a[i]-1] == true) {
+                return a[i];
+            } else {
+                dublette[a[i]-1] = true;
             }
-            i++;
-            n.add(a[i]);
         }
 
-        return dublicate;
+        return -1;
     }
+
+    char firstNotRepeatingCharacter(String s) {
+        Hashtable letters = new Hashtable<char, boolean>();
+
+        // durchlaufe den gesamten String
+        for (int i = 0; i < s.length(); i++) {
+            // befindet sich der aktuelle Buchstabe in der Hashtable
+            if(letters.contains(s.charAt(i))) {
+
+            } else {
+
+            }
+        }
+
+
+        return '_';
+    }
+
 }
