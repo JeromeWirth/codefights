@@ -1,9 +1,6 @@
 package com.jeromewirth;
 
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Spliterator;
+import java.util.*;
 
 public class InterviewPractice {
 
@@ -12,7 +9,7 @@ public class InterviewPractice {
         boolean dublette[]  = new boolean[a.length];
 
         for (int i = 0; i < a.length; i++) {
-            if(dublette[a[i]-1] == true) {
+            if(dublette[a[i]-1]) {
                 return a[i];
             } else {
                 dublette[a[i]-1] = true;
@@ -22,19 +19,75 @@ public class InterviewPractice {
         return -1;
     }
 
+//    char firstNotRepeatingCharacter(String s) {
+//        int counter = 0;
+//
+//        for(int i = 0; i < s.length(); i++) {
+//            char temp = s.charAt(i);
+//            for(int j = 0; j < s.length(); j++) {
+//                if(temp == s.charAt(j)) {
+//                    counter++;
+//                }
+//            }
+//            if(counter < 2) {
+//                return s.charAt(i);
+//            } else {
+//                counter = 0;
+//            }
+//        }
+//
+//        return '_';
+//    }
+
+//    char firstNotRepeatingCharacter(String s) {
+//        HashMap<Character, Integer> a = new HashMap<Character, Integer>();
+//        char letter;
+//
+//        for (int i = 0; i < s.length(); i++) {
+//            letter = s.charAt(i);
+//
+//            if(a.containsKey(letter)) {
+//                a.put(letter, a.get(letter)+1);
+//            } else {
+//                a.put(letter, 1);
+//            }
+//        }
+//
+//        for(Character key : a.keySet()) {
+//            if(a.get(key) == 1) {
+//                return key;
+//            }
+//        }
+//
+//        return '_';
+//    }
+
     char firstNotRepeatingCharacter(String s) {
-        Hashtable letters = new Hashtable<char, boolean>();
 
-        // durchlaufe den gesamten String
-        for (int i = 0; i < s.length(); i++) {
-            // befindet sich der aktuelle Buchstabe in der Hashtable
-            if(letters.contains(s.charAt(i))) {
+//        int counter = 0;
+//
+//        for(int i = 0; i < s.length(); i++) {
+//            char temp = s.charAt(i);
+//            for(int j = 0; j < s.length(); j++) {
+//                if(temp == s.charAt(j)) {
+//                    counter++;
+//                }
+//            }
+//            if(counter < 2) {
+//                return s.charAt(i);
+//            } else {
+//                counter = 0;
+//            }
+//        }
+//
+//        return '_';
 
-            } else {
-
+        for(int i = 0; i<s.length(); i++) {
+            char letter = s.charAt(i);
+            if(s.indexOf(letter) == s.lastIndexOf(letter)) {
+                return letter;
             }
         }
-
 
         return '_';
     }
