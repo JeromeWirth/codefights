@@ -1,5 +1,6 @@
 package com.jeromewirth;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -47,14 +48,13 @@ public class ArcadeIntro {
         int count = 0;
         int min = Arrays.stream(statues).min().getAsInt();
         int max = Arrays.stream(statues).max().getAsInt();
+
         Arrays.sort(statues);
 
         if (statues.length > 2) {
-            for (int i = 1; i < statues.length-1; i++) {
-                // Solange statues[i-1] == statues[i]
-                while(statues[i-1] == statues[i]) {
+            for(int i = 0; i < statues.length; i++) {
+                if(!(statues[i+1] == i+1)) {
                     count++;
-                    statues[i-1]++;
                 }
             }
         }
